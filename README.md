@@ -23,6 +23,12 @@ To build the software one needs to perform the following steps:
 To cross compile, it is the same as to build, but now one must only pass a toolchain file,
 where the directories are set. To compile for raspberry pi, the toolchain file is already given
 in the `cmake` directory.
+Also, one must have the cross-compiler installed in the machine.
+
+### Cross compiling in Unix machine (Linux MacOS)
+A recommended cross-compiler is [Raspi-toolchain](https://github.com/Pro/raspi-toolchain). 
+The releases can be found [here](https://github.com/Pro/raspi-toolchain/releases)
+To be able to cross compile, you must just extract the contents of the release into `/opt`.
 
    ```
     cd CIAM_Electric_Field_Mapping
@@ -31,3 +37,7 @@ in the `cmake` directory.
     cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-rasp.cmake ..
     make
    ```
+### Cross compiling in Windows machine
+One needs to find a cross-compiler. There are some options available, but must be
+explored.
+
