@@ -19,7 +19,7 @@ class Data_Logger
 public:
     Data_Logger();
 	~Data_Logger();
-	void save_vector_to_file(std::vector<uint16_t>& u16_vector);
+	void save_vector_to_file(const std::vector<uint16_t>& u16_vector);
 	void data_logging(uint32_t spi_clock_speed, double sampleRate);
 };
 

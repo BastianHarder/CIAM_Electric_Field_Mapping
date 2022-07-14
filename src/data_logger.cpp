@@ -17,8 +17,6 @@
 #include "hal/bcm2835_chip.hpp"
 #include "rhd2000registers.hpp"
 
-using namespace std;
-
 // Constructor: initialise the class
 Data_Logger::Data_Logger()
 {
@@ -32,7 +30,7 @@ Data_Logger::~Data_Logger()
 }
 
 // Function: Save Vector content in a file (append vector content to existing file)
-void Data_Logger::save_vector_to_file(vector<uint16_t>& u16_vector)
+void Data_Logger::save_vector_to_file(const std::vector<uint16_t>& u16_vector)
 {
 	int VectorLength = static_cast<int>(u16_vector.size());
 	FILE * pFile;
@@ -55,16 +53,16 @@ void Data_Logger::save_vector_to_file(vector<uint16_t>& u16_vector)
 
 
 // Function:
-void Data_Logger::data_logging(uint32_t spi_clock_speed, double rhd2000_sampleRate)
+void Data_Logger::data_logging(const uint32_t spi_clock_speed, const double rhd2000_sampleRate)
 {
 	//generate Objects of classes
 	BCM2835_Chip bcm2835_board;
 	Rhd2000Registers rhd2000regs(rhd2000_sampleRate);
 
 	//generate vector object to store commands for rhd2000
-	vector<uint16_t> rhd2000commandVector;
+	std::vector<uint16_t> rhd2000commandVector;
 	//generate vector object to store received results from rhd2000
-	vector<uint16_t> rhd2000receivedResVector;
+	std::vector<uint16_t> rhd2000receivedResVector;
 	//variable to store length of command vector
 	int VectorLength = 0;
 
