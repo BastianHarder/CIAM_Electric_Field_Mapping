@@ -14,6 +14,7 @@ To build the software one needs to perform the following steps:
    ```
     cd CIAM_Electric_Field_Mapping
     mkdir build
+    cd build
     cmake ..
     make
    ```
@@ -26,6 +27,7 @@ in the `cmake` directory.
    ```
     cd CIAM_Electric_Field_Mapping
     mkdir build
+    cd build
     cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-rasp.cmake ..
     make
    ```
