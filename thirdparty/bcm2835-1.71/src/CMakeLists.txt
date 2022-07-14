@@ -20,3 +20,5 @@ target_compile_definitions(bcm2835 PRIVATE -DPACKAGE_URL="")
 target_compile_definitions(bcm2835 PRIVATE -DPACKAGE_VERSION="${CMAKE_PROJECT_VERSION}")
 # Version number of package
 target_compile_definitions(bcm2835 PRIVATE -DVERSION="${CMAKE_PROJECT_VERSION}")
+
+target_include_directories(bcm2835 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
