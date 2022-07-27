@@ -21,6 +21,8 @@
 #ifndef RHD2000REGISTERS_H
 #define RHD2000REGISTERS_H
 
+#include <vector>
+
 class Rhd2000Registers {
 public:
     Rhd2000Registers(double sampleRate);

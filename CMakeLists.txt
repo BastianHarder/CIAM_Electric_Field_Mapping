@@ -18,7 +18,7 @@ option(CMAKE_BUILD_TYPE "Type of build, by default is Debug" Debug)
 # --------- specific toolchain options / file --------
 # You can set a CMAKE_TOOLCHAIN_FILE option in case you want to cross compile, for example.
 # You can do that by running:
-# cmake -CMAKE_TOOLCHAIN_FILE=<CMAKE-TOOLCHAIN-FILE-PATH> <PATH-TO-THE-CMakeLists.txt>
+# cmake -DCMAKE_TOOLCHAIN_FILE=<CMAKE-TOOLCHAIN-FILE-PATH> <PATH-TO-THE-CMakeLists.txt>
 
 # -------------- CMake options -----------------
 option(BUILD_TESTS "Download test frameworks and compile tests." ON)

@@ -7,15 +7,32 @@
 //----------------------------------------------------------------------------------
 
 #include <cstdio>
-#include "ciam/data_logger.hpp"
+#include "ciam/Factory.hpp"
 #include <cstdint>
+#include <thread>
 
-int main(int argc, char **argv) {
-    // The constexpr is resolved on compile time, therefore, there is no memory allocation
-	constexpr uint32_t spi_clock_speed = 500000;
-	constexpr double rhd2000sampling_rate = 5000;
-	Data_Logger data_logger;
-	data_logger.data_logging(spi_clock_speed, rhd2000sampling_rate);
-	return 0;
+#include "spdlog/spdlog.h"
+#include "ciam/config/DataLoggerConfig.hpp"
+#include "ciam/config/datasource/ExternalRHD2000Config.hpp"
+
+CIAM::DataLoggerConfig generateConfig() {
+  CIAM::DataLoggerConfig dataLoggerConfig;
+  dataLoggerConfig.datasourceConfig = std::make_shared<CIAM::ExternalRHD2000Config>();
+  return dataLoggerConfig;
 }
 
+int main(int argc, char **argv) {
+  spdlog::default_logger()->set_level(spdlog::level::level_enum::warn);
+  CIAM::Factory ciamFactory;
+
+
+  std::shared_ptr<CIAM::iDataLogger> dataLogger = ciamFactory.getDataLogger();
+
+  CIAM::DataLoggerConfig dataLoggerConfig = generateConfig();
+  dataLogger->configure(dataLoggerConfig);
+  dataLogger->startDataLogging(std::chrono::milliseconds(20));
+
+  std::this_thread::sleep_for(std::chrono::seconds(2));
+  dataLogger->stopDataLogger();
+  return 0;
+}
