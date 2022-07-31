@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <atomic>
+#include <thread>
 
 namespace CIAM {
 

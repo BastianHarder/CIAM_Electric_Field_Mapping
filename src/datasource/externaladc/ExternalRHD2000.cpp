@@ -4,7 +4,6 @@
 #include "spdlog/spdlog.h"
 
 #include <iostream>
-#include <thread>
 
 namespace CIAM {
 ExternalRHD2000::ExternalRHD2000() {}
