@@ -10,8 +10,11 @@ add_library(CIAMElectricFieldMapping ${SOURCES})
 add_dependencies(CIAMElectricFieldMapping bcm2835)
 # Usually when adding the target_link_libraries, it will create a dependency automatically
 # We make it private, because only our library needs to know about the bcm2835 library
-target_link_libraries(CIAMElectricFieldMapping PRIVATE bcm2835)
-
+target_link_libraries(CIAMElectricFieldMapping PRIVATE bcm2835
+        PRIVATE intanRhd2000
+        PUBLIC spdlog::spdlog
+        PUBLIC ${CMAKE_THREAD_LIBS_INIT} )
+target_compile_definitions(CIAMElectricFieldMapping PRIVATE SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)
 # This set the include paths of the library
 # We use the private for the "src", because its headers should not be public
 # on the other hand, the "include" is public to whoever wants to include the library,
