@@ -22,5 +22,5 @@ message(STATUS "ARM GCC Raspberry Pi OS toolchain CMAKE_MAKE_PROGRAM: ${CMAKE_MA
 #set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 SET(CMAKE_C_COMPILER arm-linux-gnueabihf-gcc)
 SET(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
-SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --with-arch=armv6 --with-float=hard --with-fpu=vfp")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --with-arch=armv6 --with-float=hard --with-fpu=vfp")
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfloat-abi=hard -mfpu=vfp -mtls-dialect=gnu -marm -march=armv6")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfloat-abi=hard -mfpu=vfp -mtls-dialect=gnu -marm -march=armv6")
